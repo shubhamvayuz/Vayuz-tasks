@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 class HomeScreenProvider extends ChangeNotifier{
  List<GetApiModel> apiList = [];
   bool isLoading = true;
-  // kggk
 
    Future<List<GetApiModel>> fetchData() async {
 
