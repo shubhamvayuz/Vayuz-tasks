@@ -1,5 +1,6 @@
 import 'package:apism/CrudWithModel/models/user.dart';
 import 'package:apism/CrudWithModel/services/user_service.dart';
+import 'package:apism/Utils/widgets/app_colors.dart';
 import 'package:apism/Utils/widgets/text_field_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -21,8 +22,9 @@ class _AddUserState extends State<AddUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("SQLite CRUD"),
+       appBar: AppBar(
+        centerTitle: true,
+        title: const Text("SQLite CRUD",style:  TextStyle(color:AppColors.appMainColor)),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -30,12 +32,14 @@ class _AddUserState extends State<AddUser> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Add New User',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.teal,
-                    fontWeight: FontWeight.w500),
+              const Center(
+                child:  Text(
+                  'Add New User',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.teal,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
               const SizedBox(
                 height: 20.0,
@@ -71,11 +75,12 @@ class _AddUserState extends State<AddUser> {
                             _validateContact == false &&
                             _validateDescription == false) {
                          // print("Good Data Can Save");
-                          var _user = User();
-                          _user.name = _userNameController.text;
-                          _user.contact = _userContactController.text;
-                          _user.description = _userDescriptionController.text;
-                          var result=await _userService.SaveUser(_user);
+                          var data = User();
+                          data.name = _userNameController.text;
+                          data.contact = _userContactController.text;
+                          data.description = _userDescriptionController.text;
+                          var result=await _userService.saveUser(data);
+                         // ignore: use_build_context_synchronously
                          Navigator.pop(context,result);
                         }
                       },
@@ -86,14 +91,14 @@ class _AddUserState extends State<AddUser> {
                   TextButton(
                       style: TextButton.styleFrom(
                           foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
+                          backgroundColor: Colors.teal.shade200,
                           textStyle: const TextStyle(fontSize: 15)),
                       onPressed: () {
                         _userNameController.text = '';
                         _userContactController.text = '';
                         _userDescriptionController.text = '';
                       },
-                      child: const Text('Clear Details'))
+                      child: const Text('Clear Details',))
                 ],
               )
             ],

@@ -1,6 +1,7 @@
 
 import 'package:apism/CrudWithModel/models/user.dart';
 import 'package:apism/CrudWithModel/services/user_service.dart';
+import 'package:apism/Utils/widgets/app_colors.dart';
 import 'package:apism/Utils/widgets/text_field_widgets.dart';
 import 'package:flutter/material.dart';
 class EditUser extends StatefulWidget {
@@ -18,7 +19,7 @@ class _EditUserState extends State<EditUser> {
   bool _validateName = false;
   bool _validateContact = false;
   bool _validateDescription = false;
-  var _userService=UserService();
+  final _userService=UserService();
 
   @override
   void initState() {
@@ -33,7 +34,8 @@ class _EditUserState extends State<EditUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("SQLite CRUD"),
+        centerTitle: true,
+        title: const Text("SQLite CRUD",style:  TextStyle(color:AppColors.appMainColor)),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -41,12 +43,14 @@ class _EditUserState extends State<EditUser> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Edit New User',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.teal,
-                    fontWeight: FontWeight.w500),
+              const Center(
+                child:  Text(
+                  'Edit New User',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.teal,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
               const SizedBox(
                 height: 20.0,
@@ -60,6 +64,7 @@ class _EditUserState extends State<EditUser> {
              
              
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
                       style: TextButton.styleFrom(
@@ -83,12 +88,13 @@ class _EditUserState extends State<EditUser> {
                             _validateContact == false &&
                             _validateDescription == false) {
                           // print("Good Data Can Save");
-                          var _user = User();
-                          _user.id=widget.user.id;
-                          _user.name = _userNameController.text;
-                          _user.contact = _userContactController.text;
-                          _user.description = _userDescriptionController.text;
-                          var result=await _userService.UpdateUser(_user);
+                          var data = User();
+                          data.id=widget.user.id;
+                          data.name = _userNameController.text;
+                          data.contact = _userContactController.text;
+                          data.description = _userDescriptionController.text;
+                          var result=await _userService.updateUser(data);
+                          // ignore: use_build_context_synchronously
                           Navigator.pop(context,result);
                         }
                       },
@@ -99,7 +105,7 @@ class _EditUserState extends State<EditUser> {
                   TextButton(
                       style: TextButton.styleFrom(
                           foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
+                          backgroundColor: Colors.teal.shade200,
                           textStyle: const TextStyle(fontSize: 15)),
                       onPressed: () {
                         _userNameController.text = '';

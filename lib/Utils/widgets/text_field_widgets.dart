@@ -1,3 +1,4 @@
+import 'package:apism/Utils/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class MyTextFieldWidgets extends StatelessWidget {
@@ -12,13 +13,22 @@ class MyTextFieldWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-                  controller: controller,
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    hintText: hintText,
-                    labelText: labelText,
-                    errorText:
-                        validate ? '$labelText Value Can\'t Be Empty' : null,
-                  ));
+      scribbleEnabled: false,
+      style: const TextStyle(color: AppColors.appMainColor),
+      cursorColor: AppColors.appMainColor,
+      controller: controller,
+      decoration: InputDecoration(
+        labelStyle: const TextStyle(color: AppColors.appMainColor),
+        border: const OutlineInputBorder(
+          borderSide: BorderSide(
+          color: AppColors.appMainColor
+          )
+        ),
+        hintText: hintText,
+        labelText: labelText,
+        hintStyle:const  TextStyle(color: AppColors.appMainColor),
+        errorText:
+            validate ? '$labelText Value Can\'t Be Empty' : null,
+      ));
   }
 }

@@ -1,9 +1,15 @@
-import 'package:apism/CrudWithModel/screens/home_screen.dart';
-import 'package:flutter/material.dart';
 
+import 'package:apism/HomeScreens/main_home_screen.dart';
+import 'package:apism/api_with_provider/providers/home_screen_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 void main() {
- 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider<HomeScreenProvider>(
+      create: (context) => HomeScreenProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -13,12 +19,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Vayuzers',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 127, 124, 131)),
         useMaterial3: true,
       ),
-      home:  const CrudHomeScreen(),
+      home:  const MainHomeScreen(),
     );
   }
 }

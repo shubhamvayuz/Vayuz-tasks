@@ -1,4 +1,5 @@
 import 'package:apism/CrudWithModel/models/user.dart';
+import 'package:apism/Utils/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ViewUser extends StatefulWidget {
@@ -15,19 +16,22 @@ class _ViewUserState extends State<ViewUser> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("SQLite CRUD"),
-        ),
+        centerTitle: true,
+        title: const Text("SQLite CRUD",style:  TextStyle(color:AppColors.appMainColor)),
+      ),
         body: Container(
-          padding: EdgeInsets.all(16.0),
+          padding:const  EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Full Details",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.blueGrey,
-                    fontSize: 20),
+             const Center(
+                child:  Text(
+                  "Full Details",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.appMainColor,
+                      fontSize: 20),
+                ),
               ),
               const SizedBox(
                 height: 20,
@@ -41,7 +45,7 @@ class _ViewUserState extends State<ViewUser> {
                           fontWeight: FontWeight.w600)),
                   Padding(
                     padding: const EdgeInsets.only(left: 30),
-                    child: Text(widget.user.name ?? '', style: TextStyle(fontSize: 16)),
+                    child: Text(widget.user.name ?? '', style: const TextStyle(fontSize: 16)),
                   ),
                 ],
               ),
@@ -57,7 +61,7 @@ class _ViewUserState extends State<ViewUser> {
                           fontWeight: FontWeight.w600)),
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
-                    child: Text(widget.user.contact ?? '', style: TextStyle(fontSize: 16)),
+                    child: Text(widget.user.contact ?? '', style: const TextStyle(fontSize: 16)),
                   ),
                 ],
               ),

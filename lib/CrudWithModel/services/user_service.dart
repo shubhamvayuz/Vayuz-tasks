@@ -10,7 +10,8 @@ class UserService
     _repository = Repository();
   }
   //Save User
-  SaveUser(User user) async{
+  // ignore: non_constant_identifier_names
+  saveUser(User user) async{
     return await _repository.insertData('users', user.userMap());
   }
   //Read All Users
@@ -18,7 +19,7 @@ class UserService
     return await _repository.readData('users');
   }
   //Edit User
-  UpdateUser(User user) async{
+  updateUser(User user) async{
     return await _repository.updateData('users', user.userMap());
   }
 

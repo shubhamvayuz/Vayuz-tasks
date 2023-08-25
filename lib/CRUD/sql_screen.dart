@@ -87,6 +87,7 @@ class _SqlHomeScreenState extends State<SqlHomeScreen> {
                   _descriptionController.text = '';
 
                   // Close the bottom sheet
+                  // ignore: use_build_context_synchronously
                   Navigator.of(context).pop();
                 },
                 child: Text(id == null ? 'Create New' : 'Update'),
@@ -113,6 +114,7 @@ class _SqlHomeScreenState extends State<SqlHomeScreen> {
   // Delete an item
   void _deleteItem(int id) async {
     await SQLHelper.deleteItem(id);
+    // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text('Successfully deleted a user!'),
     ));
