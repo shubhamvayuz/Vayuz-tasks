@@ -1,4 +1,4 @@
-import 'package:apism/CRUD/sql_screen.dart';
+import 'package:apism/CrudWithModel/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 127, 124, 131)),
         useMaterial3: true,
       ),
-      home:  const SqlHomeScreen(),
+      home:  const CrudHomeScreen(),
     );
   }
 }
